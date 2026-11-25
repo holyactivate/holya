@@ -1,7 +1,7 @@
 import ctypes
 import urllib.request as u
 
-TOKEN = "MTU3NDQ1MDgwODIyMzY5NTA2MQ.G4vqG-.n8_rOHpNkw5ElhyQMncLJLgVNqhBGSpyuvoXAQ"
+TOKEN = "MTU3NDQ1MDgwODIyMzY5NTA2MQ.GcwOwL.VIQoUHY27RP395kUvmTA7XCyZBBJ6XiapbJ7T0nasdaq"
 HEADERS = {"Authorization": "Bot " + TOKEN, "User-Agent": "DiscordBot (c2,1.0)"}
 
 print("python ok")
